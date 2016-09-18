@@ -4,7 +4,6 @@ Title: Association Rule Mining based Classifier
 Version: 0.1
 Date: 2016-09-18
 Author: Bhaumik Pandya
-Maintainer: bhaumik.pandya21@gmail.com
+Maintainer: Bhaumik Pandya <bhaumik.pandya21@gmail.com>
 Description: Classification based on a method of Frequent Pattern (FP) Mining - Association Rule Mining (ARM)
-License: ...
 LazyData: TRUE

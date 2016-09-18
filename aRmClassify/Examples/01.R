@@ -1,10 +1,10 @@
 ### Load namespace functions
-source("R/UDF.R")
-source("R/UDF_ARM.R")
-source("R/UDF_SS.R")
-source("R/UDF_SS_part2.R")
-source("R/UDF_stats.R")
-source("R/UDF_synth.R")
+# source("R/UDF.R")
+# source("R/UDF_ARM.R")
+# source("R/UDF_SS.R")
+# source("R/UDF_SS_part2.R")
+# source("R/UDF_stats.R")
+# source("R/UDF_synth.R")
 
 ### generate a random sequence with a pattern
 set.seed(1234)
