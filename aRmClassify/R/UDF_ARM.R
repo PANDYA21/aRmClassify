@@ -10,17 +10,17 @@ getArules <- function(seqs.filt, width, minsup, minconf, len, minsup2=minsup/10)
   library(zoo)
   library(arules)
   library(data.table)
-  
+
   loc <- which(seqs.filt$erc > 0)
   loc.rep <- loc[which(c(0, diff(loc)) == 1)]
   if(length(loc.rep) != 0){
     seqs.filt <- seqs.filt[-loc.rep]
   }
-  
+
   #### make error sequences identical
   bad.seq <- "error"
   seqs.filt$listo[which( seqs.filt$erc > 0 )] <- bad.seq
-  
+
   #### mask the sequences just before error (3 hrs before)
   loc <- which(seqs.filt$erc > 0)
   for(ll in loc)
@@ -28,7 +28,7 @@ getArules <- function(seqs.filt, width, minsup, minconf, len, minsup2=minsup/10)
     seqs.filt$listo[which(seqs.filt$dat > seqs.filt$dat[ll] - 3600*3 &
                             seqs.filt$dat < seqs.filt$dat[ll])] <- "0"
   }
-  
+
   seq.rle <- seqs.filt$listo
   freq.pat <- as.character(unique(seq.rle))
   freq.pat <- (freq.pat[!freq.pat %in% "0"])
@@ -38,11 +38,11 @@ getArules <- function(seqs.filt, width, minsup, minconf, len, minsup2=minsup/10)
   if(!"failed" %in% freq.pat){
     freq.pat <- c(freq.pat, "failed")
   }
-  
+
   seq.vec <- c(as.character(seq.rle))
   seq.mat <- data.table(rollapply(seq.vec, width, rbind))
   seq.mat <- eliminateAfterErrorSeqs(seq.mat)
-  seq.clus.bin <- apply(seq.mat, 1, 
+  seq.clus.bin <- apply(seq.mat, 1,
                         function(x){
                           xx <- freq.pat %in% as.character(x)
                           return(xx)
@@ -51,26 +51,26 @@ getArules <- function(seqs.filt, width, minsup, minconf, len, minsup2=minsup/10)
   names(seq.clus.bin) <- freq.pat
   rownames(seq.clus.bin) <- NULL
   seq.clus.bin <- sapply(seq.clus.bin, as.logical)
-  
+
   ## apriori algorithm
   i <- as(seq.clus.bin, "itemMatrix")
   tran <- as(seq.clus.bin, "transactions")
-  
+
   rules <- apriori(tran,
-                   parameter = list(support = minsup, confidence = minconf, 
+                   parameter = list(support = minsup, confidence = minconf,
                                     minlen=len, maxlen=len),
                    appearance = list(rhs = c(bad.seq), default="lhs"))
   if(length(rules) == 0){
     cat("\n Reducing minimum support. \n")
     rules <- apriori(tran,
-                     parameter = list(support = minsup2, confidence = minconf, 
+                     parameter = list(support = minsup2, confidence = minconf,
                                       minlen=len, maxlen=len),
                      appearance = list(rhs = c(bad.seq), default="lhs"))
   }
   if(length(rules) == 0){
     cat("\n Reducing minimum support. \n")
     rules <- apriori(tran,
-                     parameter = list(support = minsup2/2, confidence = minconf, 
+                     parameter = list(support = minsup2/2, confidence = minconf,
                                       minlen=len, maxlen=len),
                      appearance = list(rhs = c(bad.seq), default="lhs"))
   }
@@ -85,11 +85,11 @@ getArules2 <- function(seqs.filt, width, minsup, minconf, len, minsup2=minsup/2,
   library(zoo)
   library(arules)
   library(data.table)
-  
+
   #### make error sequences identical
   bad.seq <- "error"
   seqs.filt$listo[which( seqs.filt$erc > 0 )] <- bad.seq
-  
+
   if(mask3hrs == T){
     #### mask the sequences just before error (3 hrs before)
     loc <- which(seqs.filt$erc > 0)
@@ -99,7 +99,7 @@ getArules2 <- function(seqs.filt, width, minsup, minconf, len, minsup2=minsup/2,
                               seqs.filt$dat < seqs.filt$dat[ll])] <- "0"
     }
   }
-  
+
   seq.rle <- seqs.filt$listo
   if(uniq.freq == T){
     freq.pat <- as.character(unique(seq.rle))
@@ -115,13 +115,13 @@ getArules2 <- function(seqs.filt, width, minsup, minconf, len, minsup2=minsup/2,
   if(!"failed" %in% freq.pat){
     freq.pat <- c(freq.pat, "failed")
   }
-  
+
   seq.vec <- c(as.character(seq.rle))
   seq.mat <- data.frame(rollapply(seq.vec, width, rbind))
   seq.mat <- data.table(seq.mat)
   seq.mat <- eliminateAfterErrorSeqs(seq.mat)
   seq.mat <- data.frame(seq.mat)
-  seq.clus.bin <- apply(seq.mat, 1, 
+  seq.clus.bin <- apply(seq.mat, 1,
                         function(x){
                           xx <- freq.pat %in% as.character(x)
                           return(xx)
@@ -130,26 +130,26 @@ getArules2 <- function(seqs.filt, width, minsup, minconf, len, minsup2=minsup/2,
   names(seq.clus.bin) <- freq.pat
   rownames(seq.clus.bin) <- NULL
   seq.clus.bin <- sapply(seq.clus.bin, as.logical)
-  
+
   ## apriori algorithm
   i <- as(seq.clus.bin, "itemMatrix")
   tran <- as(seq.clus.bin, "transactions")
-  
+
   rules <- apriori(tran,
-                   parameter = list(support = minsup, confidence = minconf, 
+                   parameter = list(support = minsup, confidence = minconf,
                                     minlen = len, maxlen = len),
                    appearance = list(rhs = c(bad.seq), default="lhs"))
   if(length(rules) == 0){
     cat("\n Reducing minimum support. \n")
     rules <- apriori(tran,
-                     parameter = list(support = minsup2, confidence = minconf, 
+                     parameter = list(support = minsup2, confidence = minconf,
                                       minlen=len, maxlen=len),
                      appearance = list(rhs = c(bad.seq), default="lhs"))
   }
   if(length(rules) == 0){
     cat("\n Reducing Further minimum support. \n")
     rules <- apriori(tran,
-                     parameter = list(support = minsup2/2, confidence = minconf, 
+                     parameter = list(support = minsup2/2, confidence = minconf,
                                       minlen=len, maxlen=len),
                      appearance = list(rhs = c(bad.seq), default="lhs"))
   }
@@ -160,7 +160,7 @@ getArules2 <- function(seqs.filt, width, minsup, minconf, len, minsup2=minsup/2,
 #### Elimintae the sequences after error in the chunk (mask them)
 eliminateAfterErrorSeqs <- function(seq.mat, ...){
   seq.mat <- data.table(seq.mat)
-  inde <- apply(seq.mat, 1, 
+  inde <- apply(seq.mat, 1,
                 function(x){
                   wh <- which(x == "error")
                   if(length(wh) == 0){
@@ -172,7 +172,7 @@ eliminateAfterErrorSeqs <- function(seq.mat, ...){
                   }
                 })
   inde <- unlist(inde)
-  
+
   wh <- which(inde != 0 & inde != -1)
   ncols <- dim(seq.mat)[2]
   er.inde <- wh[which(inde[wh] != ncols)]
@@ -192,9 +192,9 @@ getChunkLabLift <- function(seqs.filt, width, lhss, rules.filt.df, plot.it){
     plot.it = TRUE
   }
   cat("\nThe lengthy loop started\n")
-  chunk.lab <- lapply(c(1:length(lhss)), 
+  chunk.lab <- lapply(c(1:length(lhss)),
                       function(ii){
-                        data.table(t(data.table(rollapply(seqs.filt$listo, width, 
+                        data.table(t(data.table(rollapply(seqs.filt$listo, width,
                           function(x){
                             if(all(lhss[[ii]] %in% x)){
                               return(rules.filt.df$lift[ii]*rules.filt.df$support[ii])
@@ -205,11 +205,11 @@ getChunkLabLift <- function(seqs.filt, width, lhss, rules.filt.df, plot.it){
                       })
   chunk.lab <- rbindlist(chunk.lab)
   chunk.lab <- apply(chunk.lab, 2, sum)
-  
+
   seq.ord.lab <- c(rep(0, (width-1)), chunk.lab)
   er.seq <- rep(0, length(seqs.filt$listo))
   er.seq[which(seqs.filt$erc != 0)] <- 1000
-  
+
   if(plot.it == FALSE){
     return(list("seq.ord.lab" = seq.ord.lab, "er.seq" = er.seq))
   }else{
@@ -224,7 +224,7 @@ getChunkLabLift <- function(seqs.filt, width, lhss, rules.filt.df, plot.it){
 
 #### get lhs of the rules as a list
 getLhss <- function(rules.filt.df){
-  lhss <- lapply(rules.filt.df$rules, 
+  lhss <- lapply(rules.filt.df$rules,
                  function(x) unlist(strsplit(as.character(x), "=>") ))
   lhss <- unlist(lhss)
   lhss <- lhss[seq(1,length(lhss),by = 2)]
@@ -241,27 +241,27 @@ getLhss <- function(rules.filt.df){
 ###  1. direct plot via ggplot2
 ###  2. tikzDevice package .tex and .pdf compilation (for font = "tex" option only)
 ###  3. different font support ("ComputerModern" incl.)
-plotAggGgTikz <- function(seqs.lab, f, agg.factor="day", font="default", tz="GMT", path=getwd(), 
-                          name.suffix=NULL, gen.tex=T, compile.pdf=T, font.size=10, 
+plotAggGgTikz <- function(seqs.lab, f, agg.factor="day", font="default", tz="GMT", path=getwd(),
+                          name.suffix=NULL, gen.tex=T, compile.pdf=T, font.size=10,
                           width=10, height=6){
   library(xts)
   library(ggplot2)
   seq.lab.ts <- make.ts2(x = as.numeric(seqs.lab$listo),
-                         f = f, pack = "xts", 
+                         f = f, pack = "xts",
                          ord = as.POSIXct(seqs.lab$dat, tz=tz), tz=tz)
   seq.lab.agg <- aggTs(x = seq.lab.ts, br.in = agg.factor, func = "sum")
-  seq.lab.agg <- make.ts2(x = seq.lab.agg$x, f = f, pack = "xts", 
+  seq.lab.agg <- make.ts2(x = seq.lab.agg$x, f = f, pack = "xts",
                           ord = as.POSIXct(seq.lab.agg$Time, tz=tz), tz = tz)
-  
+
   seq.er.ts <- make.ts2(seqs.lab$erc, f, "xts", seqs.lab$dat, "GMT")
   seq.er.agg <- aggTs(seq.er.ts, agg.factor, sum)
-  seq.er.agg <- make.ts2(seq.er.agg$x, f, "xts", 
+  seq.er.agg <- make.ts2(seq.er.agg$x, f, "xts",
                          as.POSIXct(seq.er.agg$Time, tz), tz)
   seq.er.agg[which(seq.er.agg != 0)] <- 1
-  
+
   norm.df <- data.frame("Time" = index(seq.lab.agg), "x" = seq.lab.agg)
   row.names(norm.df) <- NULL
-  
+
   ## location of errors
   loc.err <- which(seq.er.agg > 0)
   ii <- 1
@@ -271,20 +271,20 @@ plotAggGgTikz <- function(seqs.lab, f, agg.factor="day", font="default", tz="GMT
     xmin <- index(seq.er.agg[ll])
     xmax <- xmin+1800
     rect <- data.frame(xmin=as.POSIXct(xmin),
-                       xmax=as.POSIXct(xmax), 
+                       xmax=as.POSIXct(xmax),
                        ymin=-Inf, ymax=Inf)
     rects <- rbind(rects, rect)
     ii <- ii+1
   }
-  
+
   gg <- ggplot(norm.df, aes(Time, x)) + geom_line(size = 1.2) +
     xlab("Time") + ylab("Measure of badness in sequences") + #ylim(0,1) +
     ggtitle(strcat(c("Gateway: ", str2num(seqs.lab$gateway[1])))) +
     theme(plot.title = element_text(lineheight=.8, face="bold"))
-  
+
   oldwd <- getwd()
   setwd(path)
-  
+
   if(font %in% c("tex", "TEX", "Tex", "LaTex", "pdftex", "pdfTex", "latex")){
     library(tikzDevice)
     if(gen.tex == TRUE){
@@ -295,11 +295,11 @@ plotAggGgTikz <- function(seqs.lab, f, agg.factor="day", font="default", tz="GMT
                            fill = "RED",
                            color="RED",
                            size = 1.1,
-                           inherit.aes = FALSE)+ 
-              theme_bw() + 
+                           inherit.aes = FALSE)+
+              theme_bw() +
               theme(plot.title = element_text(face="bold", size=font.size)))
       dev.off()
-      
+
       if(compile.pdf == TRUE){
         ## generate .pdf plot
         tools::texi2dvi(tf,pdf=T)
@@ -307,37 +307,37 @@ plotAggGgTikz <- function(seqs.lab, f, agg.factor="day", font="default", tz="GMT
         # system(paste(getOption('pdfviewer'),file.path(td,'example1.pdf')))
       }
     } else {
-      pdf(file = strcat(c(str2num(seqs.lab$gateway[1]), name.suffix, ".pdf")), 
+      pdf(file = strcat(c(str2num(seqs.lab$gateway[1]), name.suffix, ".pdf")),
           width = width, height = height)
       print(gg + geom_rect(data=rects, aes(xmin=xmin, xmax=xmax, ymin=ymin, ymax=ymax),
                            fill = "RED",
                            color="RED",
                            size = 1.1,
-                           inherit.aes = FALSE)+ 
-              theme_bw() + 
+                           inherit.aes = FALSE)+
+              theme_bw() +
               theme(plot.title = element_text(face="bold", size=font.size)))
       dev.off()
     }
   } else if(font %in% c("default", "DEFAULT", "Default")) {
-    pdf(file = strcat(c(str2num(seqs.lab$gateway[1]), name.suffix, ".pdf")), 
+    pdf(file = strcat(c(str2num(seqs.lab$gateway[1]), name.suffix, ".pdf")),
         width = width, height = height)
     print(gg + geom_rect(data=rects, aes(xmin=xmin, xmax=xmax, ymin=ymin, ymax=ymax),
                          fill = "RED",
                          color="RED",
                          size = 1.1,
-                         inherit.aes = FALSE)+ 
-            theme_bw() + 
+                         inherit.aes = FALSE)+
+            theme_bw() +
             theme(plot.title = element_text(face="bold", size=font.size)))
     dev.off()
   } else {
-    pdf(file = strcat(c(str2num(seqs.lab$gateway[1]), name.suffix, ".pdf")), 
+    pdf(file = strcat(c(str2num(seqs.lab$gateway[1]), name.suffix, ".pdf")),
         width = width, height = height)
     print(gg + geom_rect(data=rects, aes(xmin=xmin, xmax=xmax, ymin=ymin, ymax=ymax),
                          fill = "RED",
                          color="RED",
                          size = 1.1,
-                         inherit.aes = FALSE)+ 
-            theme_bw() + 
+                         inherit.aes = FALSE)+
+            theme_bw() +
             theme(plot.title = element_text(family = font,
                                             face="bold", size=font.size)))
     dev.off()
@@ -392,18 +392,18 @@ preProcARM <- function(seq.datt){
   library(xts)
   library(ggplot2)
   seq.lab.ts <- make.ts2(x = as.numeric(seqs.lab$listo),
-                         f = f, pack = "xts", 
+                         f = f, pack = "xts",
                          ord = as.POSIXct(seqs.lab$dat, tz=tz), tz=tz)
   seq.lab.agg <- aggTs(x = seq.lab.ts, br.in = agg.factor, func = "sum")
-  seq.lab.agg <- make.ts2(x = seq.lab.agg$x, f = f, pack = "xts", 
+  seq.lab.agg <- make.ts2(x = seq.lab.agg$x, f = f, pack = "xts",
                           ord = as.POSIXct(seq.lab.agg$Time, tz=tz), tz = tz)
-  
+
 #   seq.er.ts <- make.ts2(seqs.lab$erc, f, "xts", seqs.lab$dat, "GMT")
 #   seq.er.agg <- aggTs(seq.er.ts, agg.factor, sum)
-#   seq.er.agg <- make.ts2(seq.er.agg$x, f, "xts", 
+#   seq.er.agg <- make.ts2(seq.er.agg$x, f, "xts",
 #                          as.POSIXct(seq.er.agg$Time, tz), tz)
 #   seq.er.agg[which(seq.er.agg != 0)] <- 1
-  
+
   norm.df <- data.frame("Time" = index(seq.lab.agg), "x" = seq.lab.agg)
   row.names(norm.df) <- NULL
   return(norm.df)
@@ -411,7 +411,7 @@ preProcARM <- function(seq.datt){
 
 
 #### generalized ARM (non sequential data)
-getArulesGen <- function(vect, width, eleminate.item = NULL,
+getArulesGenOld <- function(vect, width, eleminate.item = NULL,
                          method.rule = c("roll", "mat", "roll2"),
                          minlen = 4, maxlen = 4,
                          minsup, minconf, ...){
@@ -427,7 +427,7 @@ getArulesGen <- function(vect, width, eleminate.item = NULL,
   # method of converting to transactional data
   if(method.rule == "roll"){
     seq.mat <- data.frame(rollapply(vect, width, rbind))
-  } 
+  }
   if(method.rule == "mat"){
     seq.mat <- data.frame(t(matrix(vect, nrow = width)))
   }
@@ -436,7 +436,7 @@ getArulesGen <- function(vect, width, eleminate.item = NULL,
     seq.mat <- data.frame(rollapply(vect, width, rbind))
   }
   # Get transactions from data
-  seq.clus.bin <- apply(seq.mat, 1, 
+  seq.clus.bin <- apply(seq.mat, 1,
                         function(x){
                           xx <- freq.pat %in% as.character(x)
                           return(xx)
@@ -445,13 +445,13 @@ getArulesGen <- function(vect, width, eleminate.item = NULL,
   names(seq.clus.bin) <- freq.pat
   rownames(seq.clus.bin) <- NULL
   seq.clus.bin <- sapply(seq.clus.bin, as.logical)
-  
+
   ## apriori algorithm
   i <- as(seq.clus.bin, "itemMatrix")
   tran <- as(seq.clus.bin, "transactions")
   rules <- apriori(tran,
-                   parameter = list(support = minsup, confidence = minconf, 
-                                    minlen = minlen, maxlen = maxlen))
+                   parameter = list(support = minsup, confidence = minconf,
+                                    minlen = minlen, maxlen = maxlen), ...)
   return(rules)
 }
 

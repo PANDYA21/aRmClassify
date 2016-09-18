@@ -23,6 +23,9 @@ require("doSNOW")
 # UDFs --------------------------------------------------------------------
 ### support, confidence and lift
 suppn <- function(x, vect, width=1){
+  if(width == 1){
+    return(length(which(vect == x))/length(vect))
+  }
   library(zoo)
   dat <- data.frame(rollapply(vect, width, rbind))
   res <- apply(dat, 1, function(xx){return(all(x %in% xx))})
@@ -38,7 +41,7 @@ liftn <- function(x, y, vect, ...){
 
 ### the arules func - generelized
 getArulesGen <- function(vect, minlen=4, maxlen = 4,
-                         width, minsup, minconf){
+                         width, minsup, minconf, method.rule = "role"){
   bad.seq <- "error"
   seq.rle <- vect
   freq.pat <- as.character(unique(seq.rle))
@@ -64,6 +67,53 @@ getArulesGen <- function(vect, minlen=4, maxlen = 4,
                    parameter = list(support = minsup, confidence = minconf,
                                     minlen=minlen, maxlen=maxlen),
                    appearance = list(rhs = c(bad.seq), default="lhs"))
+  return(list(rules = rules, tran = tran, itemMatrix = i))
+}
+
+## older getArulesGen function
+getArulesGenOld <- function(vect, width, eleminate.item = NULL,
+                            method.rule = c("roll", "mat", "roll2"),
+                            minlen = 4, maxlen = 4,
+                            minsup, minconf, ...){
+  #### Execute apriori algorithm on given data
+  library(zoo)
+  library(arules)
+  library(data.table)
+  # frequent items - all items in data vector
+  freq.pat <- unique(vect)
+  if(!is.null(eleminate.item)){
+    freq.pat <- freq.pat[!freq.pat %in% eleminate.item]
+  }
+  # method of converting to transactional data
+  if(method.rule == "roll"){
+    seq.mat <- data.frame(rollapply(vect, width, rbind))
+  }
+  if(method.rule == "mat"){
+    seq.mat <- data.frame(t(matrix(vect, nrow = width)))
+  }
+  if(method.rule == "roll2"){
+    vect <- c(rep(0, width-1), vect, rep(0, width-1))
+    seq.mat <- data.frame(rollapply(vect, width, rbind))
+  }
+  seq.mat <- eliminateAfterErrorSeqs(seq.mat)
+
+  # Get transactions from data
+  seq.clus.bin <- apply(seq.mat, 1,
+                        function(x){
+                          xx <- freq.pat %in% as.character(x)
+                          return(xx)
+                        })
+  seq.clus.bin <- data.frame(t(data.frame(seq.clus.bin)))
+  names(seq.clus.bin) <- freq.pat
+  rownames(seq.clus.bin) <- NULL
+  seq.clus.bin <- sapply(seq.clus.bin, as.logical)
+
+  ## apriori algorithm
+  i <- as(seq.clus.bin, "itemMatrix")
+  tran <- as(seq.clus.bin, "transactions")
+  rules <- apriori(tran,
+                   parameter = list(support = minsup, confidence = minconf,
+                                    minlen = minlen, maxlen = maxlen), ...)
   return(rules)
 }
 
@@ -150,7 +200,8 @@ randSeqGen.old <- function(len = 10000, moreinfo = F,
 
 
 ## Incrementing probability distribution
-getIncProb <- function(region = 50, max.inc = 10, min.prob = 1/30,
+## P.S. dont change default values here, change forgenRandSeq/genSeq instead
+getIncProb <- function(region = 100, max.inc = 10, min.prob = 1/30,
                        distr = c("sine", "cosine",
                                 "tangent", "expo1", "expo2")){
   ## Generates a sequence for increasing probabilities
@@ -175,7 +226,7 @@ getIncProb <- function(region = 50, max.inc = 10, min.prob = 1/30,
 
 ## generate random sequence
 genSeq <- function(uniqs = 30, region = 100, min.prob = 1/uniqs,
-                   max.inc = 5, len = region*5, distr){
+                   max.inc = 10, len = region*5, distr = "tangent"){
   ## Generates a sequence of said unique sequences with "error" at
   ## the end. i.e. one chunk before an error.
   seqs <- sapply(1:uniqs, function(xx) return(strcat(c("S", xx))))
