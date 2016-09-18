@@ -1,0 +1,525 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"retu",
+				"return"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "aRmClassify/R/UDF.R",
+			"settings":
+			{
+				"buffer_size": 10500,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+		[
+			[
+				[
+					"Packages/C++/C++ Single File.sublime-build",
+					""
+				],
+				[
+					"Packages/C++/C++ Single File.sublime-build",
+					"Run"
+				]
+			],
+			[
+				"Packages/C++/C++ Single File.sublime-build",
+				"Run"
+			]
+		],
+		[
+			[
+				[
+					"Packages/LaTeXing/LaTeX (TikZ).sublime-build",
+					""
+				],
+				[
+					"Packages/LaTeXing/LaTeX (TikZ).sublime-build",
+					"Clean up Files"
+				]
+			],
+			[
+				"Packages/LaTeXing/LaTeX (TikZ).sublime-build",
+				""
+			]
+		],
+		[
+			[
+				[
+					"Packages/LaTeXing/LaTeX.sublime-build",
+					""
+				],
+				[
+					"Packages/LaTeXing/LaTeX.sublime-build",
+					"Clean up Files"
+				]
+			],
+			[
+				"Packages/LaTeXing/LaTeX.sublime-build",
+				""
+			]
+		]
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 392.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"",
+				"Build: Custom Quick Build"
+			],
+			[
+				"Snippet: Bibtex man",
+				"Snippet: BibTeX Manual"
+			],
+			[
+				"Snippet: Bibtex tec",
+				"Snippet: BibTeX Techreport"
+			],
+			[
+				"update",
+				"Package Control: Upgrade/Overwrite All Packages"
+			],
+			[
+				"up",
+				"Package Control: Upgrade Package"
+			],
+			[
+				"package",
+				"Package Control: List Packages"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"packa",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 467.0
+	},
+	"console":
+	{
+		"height": 126.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = '2915d1851351e5ee549c20394736b442' + '8bc59f460fa1548d1514676163dafc88'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/Users/bhaumik/Downloads/CoAP_Overall.svg",
+		"/Users/bhaumik/Downloads/FinalTemplate/Chapter2/Chapter2.tex",
+		"/Users/bhaumik/Downloads/FinalTemplate/Chapter4/chapter4.tex",
+		"/Users/bhaumik/Downloads/FinalTemplate/Chapter7/chapter7.tex",
+		"/Users/bhaumik/Downloads/FinalTemplate/Chapter6/chapter6.tex",
+		"/Users/bhaumik/Downloads/FinalTemplate/Chapter3/Chapter3.tex",
+		"/Users/bhaumik/Desktop/head/HeadDev2/project.json",
+		"/Users/bhaumik/Downloads/FinalTemplate/Chapter5/chapter5.tex",
+		"/Users/bhaumik/Downloads/FinalTemplate/Chapter8/chapter8.tex",
+		"/Users/bhaumik/Downloads/GIAG2.crl",
+		"/Users/bhaumik/Desktop/z_dtls.txt",
+		"/Users/bhaumik/Desktop/z_comp.txt",
+		"/Users/bhaumik/Desktop/ZealTinyOS/tinyos-2.1.2/apps/CoapBlipS/integer.c",
+		"/Users/bhaumik/Desktop/ZealTinyOS/tinyos-2.1.2/apps/CoapBlipS/integer_settings.h",
+		"/Users/bhaumik/Desktop/ZealTinyOS/tinyos-2.1.2/apps/CoapBlipS/integer.h",
+		"/Users/bhaumik/Desktop/ZealTinyOS/tinyos-2.1.2/apps/CoapBlipS/ecc.h",
+		"/Users/bhaumik/Desktop/ZealTinyOS/tinyos-2.1.2/apps/CoapBlipS/EccP.nc",
+		"/Users/bhaumik/Desktop/ZealTinyOS/tinyos-2.1.2/apps/CoapBlipS/EccC.nc",
+		"/Users/bhaumik/Desktop/ZealTinyOS/tinyos-2.1.2/apps/CoapBlipS/ECC.nc",
+		"/Users/bhaumik/Desktop/ZealTinyOS/tinyos-2.1.2/apps/CoapBlipS/CoapBlipP.nc",
+		"/Users/bhaumik/Desktop/ZealTinyOS/tinyos-2.1.2/apps/CoapBlipS/CoapBlipC.nc",
+		"/Users/bhaumik/Desktop/ZealTinyOS/tinyos-2.1.2/apps/CoapBlipS/tinyos_coap_resources.h",
+		"/Users/bhaumik/Desktop/ZealTinyOS/tinyos-2.1.2/apps/CoapBlipS/Makefile",
+		"/usr/include/sys/syslog.h",
+		"/Users/bhaumik/Desktop/ZealTinyOS/tinyos-2.1.2/tos/interfaces/LibCoAP.nc",
+		"/Users/bhaumik/Desktop/ZealTinyOS/tinyos-2.1.2/tools/tinyos/c/coap/coap-server.c",
+		"/Users/bhaumik/Desktop/ZealTinyOS/tinyos-2.1.2/apps/tinypkc/makefile",
+		"/Users/bhaumik/Desktop/ZealTinyOS/tinyos-2.1.2/apps/tinypkc/AppECCC.nc",
+		"/Users/bhaumik/Desktop/ZealTinyOS/tinyos-2.1.2/apps/tinypkc/AppECCP.nc",
+		"/Users/bhaumik/Desktop/ZealTinyOS/tinyos-2.1.2/apps/CoapBlip copy/Makefile",
+		"/Users/bhaumik/Desktop/ZealTinyOS/tinyos-2.1.2/apps/tinypkc/EccC.nc",
+		"/Users/bhaumik/Desktop/ZealTinyOS/tinyos-2.1.2/apps/tinypkc/EccP.nc",
+		"/Users/bhaumik/Desktop/ZealTinyOS/tinyos-2.1.2/tools/tinyos/c/coap/tinydtls-coap/dtls/dtls.h",
+		"/Users/bhaumik/Desktop/ZealTinyOS/tinyos-2.1.2/tools/tinyos/c/coap/resource.h",
+		"/Users/bhaumik/Desktop/ZealTinyOS/tinyos-2.1.2/tools/tinyos/c/coap/resource.c",
+		"/Users/bhaumik/Desktop/ZealTinyOS/tinyos-2.1.2/tools/tinyos/c/coap/tinydtls-coap/dtls/dtls.c",
+		"/Users/bhaumik/Desktop/ZealTinyOS/tinyos-2.1.2/apps/CoapBlip/tinyos_coap_resources.h",
+		"/Users/bhaumik/Desktop/ZealTinyOS/tinyos-2.1.2/tos/interfaces/CoAPServer.nc",
+		"/Users/bhaumik/Desktop/ZealTinyOS/tinyos-2.1.2/apps/CoapBlip/CoapBlipP.nc",
+		"/Users/bhaumik/Desktop/ZealTinyOS/tinyos-2.1.2/apps/CoapBlip/Makefile",
+		"/Users/bhaumik/Desktop/ZealTinyOS/tinyos-2.1.2/apps/CoapBlip/CoapBlipC.nc",
+		"/Users/bhaumik/Desktop/ZealTinyOS/tinyos-2.1.2/tools/tinyos/c/coap/tinydtls-coap/coaps-server.c",
+		"/Users/bhaumik/Desktop/ZealTinyOS/tinyos-2.1.2/tools/tinyos/c/coap/README.COAPBLIP",
+		"/Users/bhaumik/Desktop/ZealTinyOS/tinyos-2.1.2/apps/Sense/SenseAppC.nc",
+		"/Users/bhaumik/Desktop/ZealTinyOS/tinyos-2.1.2/apps/tinydtls/dtls.c",
+		"/Users/bhaumik/Desktop/ZealTinyOS/tinyos-2.1.2/apps/CoapPpp/CoapPppP.nc",
+		"/Users/bhaumik/Desktop/ZealThesis/tinydtls-coap/coaps-server.c",
+		"/Users/bhaumik/Downloads/nrf5_iot_sdk_3288530/examples/iot/dtls/coap_server/main.c",
+		"/Users/bhaumik/Desktop/Chapter3.tex",
+		"/Users/bhaumik/Downloads/FinalTemplate/MasterThesis.bib",
+		"/Users/bhaumik/Downloads/FinalTemplate/thesis.tex",
+		"/Users/bhaumik/Dropbox/DropBoxManBac/Dropbox_8.8Gigs/MAIT/Assignments/Sem-IV/Thesis/FinalTemplate/MyThesis.bib",
+		"/Users/bhaumik/Desktop/xyz.bib",
+		"/Users/bhaumik/Dropbox/syslog.h",
+		"/Users/bhaumik/Desktop/ZealTinyOS/tinyos-2.1.2/tools/tinyos/c/coap/tinydtls-coap/dtls/config.h",
+		"/Users/bhaumik/Desktop/tinydtls-coap/coaps-client.c",
+		"/Users/bhaumik/Desktop/ZealTinyOS/tinyos-2.1.2/apps/Blink/BlinkAppC.nc",
+		"/Users/bhaumik/Desktop/Thesis/FinalTemplate/Chapter3/Chapter3.tex",
+		"/opt/local/include/gcc47/c++/gnu/java/awt/print/SpooledDocument.h",
+		"/Users/bhaumik/Desktop/Thesis/FinalTemplate/thesis.tex",
+		"/Users/bhaumik/Desktop/CF_Buildpack_R_build_Heroku/build_with_heroku",
+		"/Users/bhaumik/Desktop/CF_Buildpack_R_build_Heroku/.env",
+		"/Users/bhaumik/Desktop/wakaama/examples/client/lwm2mclient.c",
+		"/Users/bhaumik/Desktop/ZealTinyOS/tinyos-2.1.2/tools/tinyos/c/coap/pdu.h",
+		"/Users/bhaumik/Desktop/ZealTinyOS/tinyos-2.1.2/tools/tinyos/c/coap/coap_list.h",
+		"/Users/bhaumik/Desktop/ZealTinyOS/tinyos-2.1.2/tools/tinyos/c/coap/examples/README.etsi_iot",
+		"/Users/bhaumik/Desktop/HeadClean/HeadCleanDoku/tp.tex",
+		"/Users/bhaumik/Desktop/BlueMixPptApp/manifest.yml",
+		"/Users/bhaumik/Desktop/ZealTinyOS/tinyos-2.1.2/tos/lib/net/coap/translate/CoapBufferHumTranslateC.nc",
+		"/Users/bhaumik/Desktop/ZealTinyOS/tinyos-2.1.2/tools/tinyos/c/coap/coap-observer.c",
+		"/Users/bhaumik/Desktop/ZealTinyOS/tinyos-2.1.2/tools/tinyos/c/coap/examples/client.c",
+		"/Users/bhaumik/Desktop/ZealTinyOS/tinyos-2.1.2/apps/CoapBlip/build/telosb/StorageVolumes.h",
+		"/Users/bhaumik/Desktop/Thesis/FinalTemplateZeal/titlepage.tex",
+		"/Users/bhaumik/Desktop/Thesis/FinalTemplate/Chapter1/chapter1.tex",
+		"/Users/bhaumik/Desktop/Thesis/FinalTemplateZeal/thesis.tex",
+		"/Users/bhaumik/Dropbox/DropBoxManBac/Dropbox_8.8Gigs/MAIT/Assignments/Sem-IV/Thesis/FinalTemplate/thesis.tex",
+		"/Users/bhaumik/Dropbox/DropBoxManBac/Dropbox_8.8Gigs/MAIT/Assignments/ClassifierPublication/Paper/ARM_Classifier_Pandya.tex",
+		"/Users/bhaumik/Desktop/Thesis/FinalTemplate/MyThesis.bib",
+		"/Users/bhaumik/Desktop/ZealTinyOS/tinyos-2.1.2/tos/interfaces/ResourceQueue.nc",
+		"/Users/bhaumik/Desktop/ZealTinyOS/tinyos-2.1.2/tos/system/ArbiterP.nc",
+		"/Users/bhaumik/Desktop/ZealTinyOS/tinyos-2.1.2/tos/system/FcfsResourceQueueC.nc",
+		"/Users/bhaumik/Desktop/ZealTinyOS/tinyos-2.1.2/tos/types/Resource.h",
+		"/Users/bhaumik/Desktop/ZealTinyOS/tinyos-2.1.2/tos/system/SimpleArbiterP.nc",
+		"/Users/bhaumik/Desktop/ZealTinyOS/tinyos-2.1.2/apps/CoapPpp/README",
+		"/Users/bhaumik/Desktop/ZealTinyOS/tinyos-2.1.2/apps/CoapPpp/CoapPppC.nc",
+		"/Users/bhaumik/Desktop/ZealTinyOS/tinyos-2.1.2/apps/PppRouter/PppRouterC.nc",
+		"/Users/bhaumik/Desktop/ZealTinyOS/tinyos-2.1.2/doc/txt/tep108.txt",
+		"/Users/bhaumik/Desktop/ZealTinyOS/tinyos-2.1.2/tos/interfaces/Queue.nc",
+		"/Users/bhaumik/Desktop/ZealTinyOS/tinyos-2.1.2/apps/CoapBlip/build/telosb/app.c",
+		"/Users/bhaumik/Desktop/ZealTinyOS/tinyos-2.1.2/tools/tinyos/c/blip/lib6lowpan/blip-tinyos-includes.h",
+		"/Users/bhaumik/Desktop/ZealTinyOS/tinyos-2.1.2/tos/interfaces/CoapResource.nc",
+		"/Users/bhaumik/Desktop/ZealTinyOS/tinyos-2.1.2/tools/tinyos/c/coap/async.h",
+		"/Users/bhaumik/Desktop/ZealTinyOS/tinyos-2.1.2/tos/system/QueueC.nc",
+		"/Users/bhaumik/Desktop/ZealTinyOS/tinyos-2.1.2/tos/interfaces/Resource.nc",
+		"/Users/bhaumik/Desktop/ZealTinyOS/tinyos-2.1.2/tos/interfaces/ResourceDefaultOwner.nc",
+		"/Users/bhaumik/Desktop/ZealTinyOS/tinyos-2.1.2/tos/interfaces/ResourceConfigure.nc",
+		"/Users/bhaumik/Desktop/ZealTinyOS/tinyos-2.1.2/tos/interfaces/Init.nc",
+		"/Users/bhaumik/Dropbox/DropBoxManBac/Dropbox_8.8Gigs/MAIT/Assignments/Sem-IV/Thesis/FinalTemplate/Chapter1/chapter1.tex",
+		"/Users/bhaumik/Desktop/ZealTinyOS/tinyos-2.1.2/tos/types/IeeeEui64.h",
+		"/Users/bhaumik/Desktop/ZealTinyOS/tinyos-main/README.md",
+		"/Users/bhaumik/Desktop/ZealTinyOS/tinyos-main/tos/lib/serial/Serial.h",
+		"/Users/bhaumik/Desktop/headprod/project.json",
+		"/Users/bhaumik/Downloads/cf-buildpack-r-master/bin/compile",
+		"/Users/bhaumik/Dropbox/DropBoxManBac/Dropbox_8.8Gigs/MAIT/ApplicationBoxForJobs/HRS/texport/CoverLetter.tex",
+		"/Users/bhaumik/DropBoxManBacManUpdate/Dropbox_8,8GigsManUpdate/MAIT/ApplicationBoxForJobs/ComSyst/texport/portfolio.tex",
+		"/Users/bhaumik/DropBoxManBacManUpdate/Dropbox_8,8GigsManUpdate/MAIT/ApplicationBoxForJobs/ComSyst/texport/CoverLetter.tex",
+		"/Users/bhaumik/Desktop/BoschPpt/UniPpt2/logo.css",
+		"/Users/bhaumik/Desktop/BoschPpt/UniPpt2/logo copy.css",
+		"/Users/bhaumik/DropBoxManBac/Dropbox/MAIT/ApplicationBoxForJobs/ISRA/texport/portfolio.tex",
+		"/Users/bhaumik/Desktop/FinalUniPpt.html",
+		"/Users/bhaumik/Desktop/BoschPpt/UniPpt2/fig/ROCs/ROCs.tex",
+		"/Users/bhaumik/Desktop/BoschPpt/UniPpt2/fig/ImageComb/CombImage.tex",
+		"/Users/bhaumik/Library/Mobile Documents/com~apple~CloudDocs/MasterThesis/FinalTemplate/Chapter5/Chapter5.tex",
+		"/Users/bhaumik/Downloads/arm.html",
+		"/Users/bhaumik/Desktop/BoschPpt/UniPpt2/2.html",
+		"/Users/bhaumik/Downloads/arm.xml",
+		"/Users/bhaumik/Desktop/C/hw.c",
+		"/Users/bhaumik/Dropbox/MAIT/ApplicationBoxForJobs/ISRA/texport/CoverLetter.tex",
+		"/Users/bhaumik/Dropbox/MAIT/ApplicationBoxForJobs/ISRA/texport/portfolio.tex",
+		"/Users/bhaumik/Dropbox/MAIT/ApplicationBoxForJobs/Fraunhofer/CoverLetter.tex",
+		"/Users/bhaumik/Dropbox/MAIT/ApplicationBoxForJobs/Fraunhofer/texport/portfolio.tex",
+		"/Users/bhaumik/Dropbox/MAIT/ApplicationBoxForJobs/Fraunhofer/texport/CoverLetter.tex",
+		"/Users/bhaumik/Dropbox/MAIT/ApplicationBoxForJobs/PnG/CoverLetter.tex",
+		"/Users/bhaumik/Dropbox/MAIT/ApplicationBoxForJobs/PnG/cv.txt",
+		"/Users/bhaumik/Dropbox/MAIT/ApplicationBoxForJobs/PnG/texport/CoverLetter.tex",
+		"/Users/bhaumik/Dropbox/MAIT/ApplicationBoxForJobs/Cognizant/CoverLetter.tex",
+		"/Users/bhaumik/Dropbox/MAIT/ApplicationBoxForPartTimeJobs/Dm/texport/CoverLetter.tex",
+		"/Users/bhaumik/Dropbox/MAIT/ApplicationBoxForPartTimeJobs/Dm/texport/portfolio.tex"
+	],
+	"find":
+	{
+		"height": 26.0
+	},
+	"find_in_files":
+	{
+		"height": 93.0,
+		"where_history":
+		[
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"figure",
+			"table",
+			"  ",
+			"cipher",
+			"Printf",
+			"mp_digit",
+			"COAP_CLIENT_ENABLED",
+			"ForwardingTableEvents",
+			"count",
+			"print",
+			"in6",
+			"DO_PRINTF",
+			"POST_SUPP",
+			"stri",
+			"MY_ECC_PRIVATE",
+			"stri",
+			"str",
+			"buff",
+			"MP_",
+			"connec",
+			"COAP_SERVER_ENABLED",
+			"resources",
+			"registerResources",
+			"resource",
+			"register",
+			"udp",
+			"interface",
+			"coap",
+			"interface",
+			"log_t",
+			"log",
+			"coap_send",
+			"coap_send_confirmed",
+			" \n",
+			"\\end{code}",
+			"\\begin{code}",
+			"COAP_CLIENT_ENABLED",
+			"data.table(",
+			"cbind",
+			": ",
+			"ResourceQueue",
+			"resourceQueue",
+			"resource",
+			"+",
+			"data = the.dat,",
+			"the.dat$",
+			"x = the.dat$tt,",
+			",  ",
+			"x = durs,",
+			"1:6",
+			"passion",
+			"AG",
+			"relation",
+			"relationship",
+			"relationship between",
+			"}\n",
+			"in the Sec",
+			"total sequences",
+			"\\section{",
+			"in thi chapter",
+			"which are subject to",
+			"equat",
+			"minipage",
+			"clip",
+			"iot",
+			"bread",
+			"milk",
+			"chillies",
+			"flour",
+			"butter",
+			"kant",
+			"sequence",
+			"tan2004",
+			" \n",
+			"multico",
+			"y = 2",
+			"y = 4",
+			"_____",
+			"x = 5",
+			".on.lifts",
+			"\\section"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"\\end{lstlisting}",
+			"\\begin{lstlisting}[style = json, backgroundcolor = \\color{verbgray}]",
+			"\n",
+			"data.table",
+			"\", \"",
+			"|",
+			"",
+			", x = the.dat$tt, ",
+			"",
+			"durs",
+			"kdd",
+			"\\texttt{bread}",
+			"\\texttt{milk}",
+			"\\texttt{chillies}",
+			"\\texttt{flour}",
+			"\\texttt{butter}",
+			"item",
+			"y = 10",
+			"y = 2",
+			"=====",
+			"x = 3",
+			"x = 7",
+			".width"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "aRmClassify/R/UDF.R",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 10500,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/R/R.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 26.0
+	},
+	"input":
+	{
+		"height": 0.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 128.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "Packages/LaTeXing/LaTeX (TikZ).sublime-build",
+	"project": "aRmClassify.sublime-project",
+	"replace":
+	{
+		"height": 48.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 150.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
